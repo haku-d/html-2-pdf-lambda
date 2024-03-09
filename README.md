@@ -9,3 +9,12 @@ sam build
 ```
 sam deploy --guided
 ```
+
+```
+curl --location 'YOUR_API_GATEWAY_ENDPOINT' \
+--header 'Accept: application/pdf' \
+--header 'Content-Type: application/json' \
+--data '{
+    "content": "<h1>Hello world</h1>"
+}'
+```
