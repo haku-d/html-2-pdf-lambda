@@ -10,6 +10,7 @@ sam build
 sam deploy --guided
 ```
 
+## Test your deployment
 ```
 curl --location 'YOUR_API_GATEWAY_ENDPOINT' \
 --header 'Accept: application/pdf' \
