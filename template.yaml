@@ -41,9 +41,9 @@ Outputs:
   Html2PdfApiProd:
     Description: "API Gateway endpoint URL for prod stage for html2pdf function"
     Value: !Sub "https://${Html2PdfApiProd}.execute-api.${AWS::Region}.amazonaws.com/prod/"
-  HelloWorldFunction:
+  Html2PdfFunction:
     Description: "html2pdf Lambda Function ARN"
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
+    Value: !GetAtt Html2PdfFunction.Arn
+  Html2PdfFunctionIamRole:
     Description: "Implicit IAM Role created for html2pdf function"
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+    Value: !GetAtt Html2PdfFunctionRole.Arn
