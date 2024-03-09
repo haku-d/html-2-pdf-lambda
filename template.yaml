@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  html2pdf
+  
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  Html2PdfApiProd:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Auth:
+        DefaultAuthorizer: 'None'
+      BinaryMediaTypes:
+        - application/pdf
+  Html2PdfFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: html2pdf/
+      Handler: app.lambdaHandler
+      Runtime: nodejs20.x
+      Architectures:
+        - x86_64
+      MemorySize: 1024 # As desired
+      Timeout: 29 # Just follow the API gateway timeout setting
+      Layers:
+        - arn:aws:lambda:ca-central-1:764866452798:layer:chrome-aws-lambda:43 # google chrome as a layer
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
+            RestApiId:
+              Ref: Html2PdfApiProd
+
+Outputs:
+  Html2PdfApiProd:
+    Description: "API Gateway endpoint URL for prod stage for html2pdf function"
+    Value: !Sub "https://${Html2PdfApiProd}.execute-api.${AWS::Region}.amazonaws.com/prod/"
+  HelloWorldFunction:
+    Description: "html2pdf Lambda Function ARN"
+    Value: !GetAtt HelloWorldFunction.Arn
+  HelloWorldFunctionIamRole:
+    Description: "Implicit IAM Role created for html2pdf function"
+    Value: !GetAtt HelloWorldFunctionRole.Arn
