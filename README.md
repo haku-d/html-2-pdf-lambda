@@ -1,4 +1,14 @@
+## Update chrome-aws-lambda layer
+
+Open `template.yaml` and change the layer arm of of chrome-aws-lambda to your desired version. 
+
+> arn:aws:lambda:`<YOUR REGION>`:764866452798:layer:chrome-aws-lambda:`<CHROME VERSION>` # google chrome as a layer
+
+For example: `arn:aws:lambda:ca-central-1:764866452798:layer:chrome-aws-lambda:43 # google chrome as a layer`
+
 ## Grants sufficient permissions for users to deploy, update, and delete the application
+
+[https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-permissions-cloudformation.html](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-permissions-cloudformation.html)
 
 ```
 {
