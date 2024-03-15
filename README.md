@@ -180,3 +180,5 @@ curl --location 'YOUR_API_GATEWAY_ENDPOINT' \
     "content": "<h1>Hello world</h1>"
 }'
 ```
+
+If you have any issue or feedback, [please leave me comment](https://thanhd.ca/post/generate-pdf-with-serverless-api)
